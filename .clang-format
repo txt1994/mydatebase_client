@@ -1,0 +1,164 @@
+BasedOnStyle: Google               
+ColumnLimit: 100
+IndentWidth: 4                     
+Language: Cpp                           
+
+# 连续赋值时，对齐所有等号
+AlignConsecutiveAssignments: AcrossComments
+# 连续声明时，对齐所有声明的变量名
+#AlignConsecutiveDeclarations: true # 效果不好，空格太多
+AlignConsecutiveBitFields: Consecutive
+AlignConsecutiveMacros: Consecutive
+AlignTrailingComments: true        
+AlignAfterOpenBracket: Align       
+AlignEscapedNewlines: Left         
+AlignOperands: Align
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortEnumsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Empty
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortLambdasOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakAfterDefinitionReturnType: None # 已废弃
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: Yes
+AttributeMacros: ['__capability', '__output', '__ununsed']
+BinPackArguments: true
+BinPackParameters: true
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: true
+  AfterControlStatement: Never
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterObjCDeclaration: true
+  AfterStruct: true
+  AfterUnion: false
+  AfterExternBlock: true
+  BeforeCatch: true
+  BeforeElse: true
+  BeforeLambdaBody: false
+  BeforeWhile: false
+  IndentBraces: false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
+BreakBeforeBinaryOperators: None
+BreakBeforeConceptDeclarations: true
+BreakBeforeInheritanceComma: false
+BreakInheritanceList: AfterColon
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializersBeforeComma: false
+BreakConstructorInitializers: BeforeColon
+BreakAfterJavaFieldAnnotations: false
+BreakStringLiterals: true
+CommentPragmas: '^ IWYU pragma:'
+CompactNamespaces: false
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
+Cpp11BracedListStyle: false
+DeriveLineEnding: true
+DerivePointerAlignment: false
+DisableFormat: false
+EmptyLineBeforeAccessModifier: LogicalBlock
+ExperimentalAutoDetectBinPacking: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+AllowAllConstructorInitializersOnNextLine: true
+FixNamespaceComments: true
+ForEachMacros:
+  - foreach
+  - Q_FOREACH
+  - BOOST_FOREACH
+IncludeBlocks: Preserve
+IncludeCategories:
+  - Regex: '^"(llvm|llvm-c|clang|clang-c)/'
+    Priority: 2
+    SortPriority: 0
+    CaseSensitive: false
+  - Regex: '^(<|"(gtest|gmock|isl|json)/)'
+    Priority: 3
+    SortPriority: 0
+    CaseSensitive: false
+  - Regex: '.*'
+    Priority: 1
+    SortPriority: 0
+    CaseSensitive: false
+IncludeIsMainRegex: '(Test)?$'
+IncludeIsMainSourceRegex: ''
+IndentGotoLabels: true
+IndentPPDirectives: BeforeHash # BeforeHash or None
+IndentExternBlock: AfterExternBlock
+AccessModifierOffset: -4
+IndentWrappedFunctionNames: false
+InsertTrailingCommas: None
+JavaScriptQuotes: Leave
+JavaScriptWrapImports: true
+KeepEmptyLinesAtTheStartOfBlocks: true
+MacroBlockBegin: ''
+MacroBlockEnd: ''
+MaxEmptyLinesToKeep: 1 # 1 or 0
+NamespaceIndentation: All
+ObjCBinPackProtocolList: Auto
+ObjCBlockIndentWidth: 2 # 2 or 4
+ObjCBreakBeforeNestedBlockParam: true
+ObjCSpaceAfterProperty: false
+ObjCSpaceBeforeProtocolList: true
+PenaltyBreakAssignment: 2
+PenaltyBreakBeforeFirstCallParameter: 19
+PenaltyBreakComment: 300
+PenaltyBreakFirstLessLess: 120
+PenaltyBreakString: 1000
+PenaltyBreakTemplateDeclaration: 10
+PenaltyExcessCharacter: 1000000
+PenaltyReturnTypeOnItsOwnLine: 120
+PenaltyIndentedWhitespace: 0
+ReflowComments: true
+SortIncludes: CaseSensitive
+SortJavaStaticImport: Before
+SpaceAroundPointerQualifiers: Default
+PointerAlignment: Left  
+SortUsingDeclarations: true
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: true
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: true
+SpaceBeforeCpp11BracedList: true
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceInEmptyBlock: false
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 1
+SpacesInAngles: true
+SpacesInConditionalStatement: false
+SpacesInContainerLiterals: true
+SpacesInCStyleCastParentheses: false
+SpacesInLineCommentPrefix:
+  Minimum: 1
+  Maximum: -1
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpaceBeforeSquareBrackets: false
+BitFieldColonSpacing: Both
+StatementAttributeLikeMacros:
+  - Q_EMIT
+StatementMacros:
+  - Q_UNUSED
+  - QT_REQUIRE_VERSION
+UseCRLF: false
+UseTab: Never
+WhitespaceSensitiveMacros:
+  - STRINGIZE
+  - PP_STRINGIZE
+  - BOOST_PP_STRINGIZE
+  - NS_SWIFT_NAME
+  - CF_SWIFT_NAME
+TabWidth: 4                        
+Standard: Latest
