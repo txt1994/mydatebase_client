@@ -18,7 +18,7 @@ QWidget* QWComboBoxDelegate::createEditor(QWidget* parent, const QStyleOptionVie
     for (int i = 0; i < m_ItemList.count(); i++) //从字符串列表初始下拉列表
         editor->addItem(m_ItemList.at(i));
 
-    editor->setEditable(m_isEdit); //是否可编辑
+    editor->setEditable(m_isEdit); //是否可编辑....
     return editor;
 }
 

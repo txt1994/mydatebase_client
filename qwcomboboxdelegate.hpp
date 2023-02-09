@@ -15,7 +15,7 @@ public:
     QWComboBoxDelegate(QObject* parent = nullptr);
 
     void setItems(QStringList items,
-                  bool isEdit); //初始化设置列表内容，是否可编辑
+                  bool isEdit); //初始化设置列表内容，是否可编辑....
     //自定义代理组件必须继承以下4个函数
     QWidget* createEditor(QWidget* parent, const QStyleOptionViewItem& option,
                           const QModelIndex& index) const Q_DECL_OVERRIDE;
