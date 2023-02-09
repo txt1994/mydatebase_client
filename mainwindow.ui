@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>735</width>
+    <height>482</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>735</width>
+    <height>482</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -16,9 +22,6 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QTreeView" name="treeView"/>
-    </item>
-    <item row="0" column="1">
      <widget class="QTableView" name="tableView"/>
     </item>
    </layout>
@@ -28,7 +31,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>735</width>
      <height>26</height>
     </rect>
    </property>
@@ -47,20 +50,177 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actOpen_Database"/>
+   <addaction name="actOpenDB"/>
+   <addaction name="separator"/>
+   <addaction name="actRecAppend"/>
+   <addaction name="actRecInsert"/>
+   <addaction name="actRecDelete"/>
+   <addaction name="separator"/>
+   <addaction name="actPhoto"/>
+   <addaction name="actPhotoClear"/>
+   <addaction name="actScan"/>
+   <addaction name="separator"/>
+   <addaction name="actSubmit"/>
+   <addaction name="actRevert"/>
+   <addaction name="separator"/>
+   <addaction name="actFlush_database"/>
+   <addaction name="actQuit"/>
+   <addaction name="separator"/>
   </widget>
-  <action name="actOpen_Database">
+  <action name="actOpenDB">
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/img/add-fill.png</normaloff>:/img/add-fill.png</iconset>
+    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+     <normaloff>:/images/images/open3.bmp</normaloff>:/images/images/open3.bmp</iconset>
    </property>
    <property name="text">
+    <string>打开</string>
+   </property>
+   <property name="toolTip">
     <string>打开数据库</string>
    </property>
   </action>
+  <action name="actQuit">
+   <property name="icon">
+    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+     <normaloff>:/images/images/exit.bmp</normaloff>:/images/images/exit.bmp</iconset>
+   </property>
+   <property name="text">
+    <string>退出</string>
+   </property>
+   <property name="toolTip">
+    <string>退出</string>
+   </property>
+  </action>
+  <action name="actRecAppend">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+     <normaloff>:/images/images/316.bmp</normaloff>:/images/images/316.bmp</iconset>
+   </property>
+   <property name="text">
+    <string>添加</string>
+   </property>
+   <property name="toolTip">
+    <string>添加记录</string>
+   </property>
+  </action>
+  <action name="actRecInsert">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+     <normaloff>:/images/images/306.bmp</normaloff>:/images/images/306.bmp</iconset>
+   </property>
+   <property name="text">
+    <string>插入</string>
+   </property>
+   <property name="toolTip">
+    <string>插入记录</string>
+   </property>
+  </action>
+  <action name="actSubmit">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+     <normaloff>:/images/images/save1.bmp</normaloff>:/images/images/save1.bmp</iconset>
+   </property>
+   <property name="text">
+    <string>保存</string>
+   </property>
+   <property name="toolTip">
+    <string>保存修改</string>
+   </property>
+  </action>
+  <action name="actRevert">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+     <normaloff>:/images/images/ubdo.bmp</normaloff>:/images/images/ubdo.bmp</iconset>
+   </property>
+   <property name="text">
+    <string>取消</string>
+   </property>
+   <property name="toolTip">
+    <string>取消修改</string>
+   </property>
+  </action>
+  <action name="actRecDelete">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+     <normaloff>:/images/images/delete1.bmp</normaloff>:/images/images/delete1.bmp</iconset>
+   </property>
+   <property name="text">
+    <string>删除</string>
+   </property>
+   <property name="toolTip">
+    <string>删除记录</string>
+   </property>
+  </action>
+  <action name="actPhoto">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+     <normaloff>:/images/images/00.JPG</normaloff>:/images/images/00.JPG</iconset>
+   </property>
+   <property name="text">
+    <string>设置照片</string>
+   </property>
+   <property name="toolTip">
+    <string>设置照片</string>
+   </property>
+  </action>
+  <action name="actPhotoClear">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+     <normaloff>:/images/images/103.bmp</normaloff>:/images/images/103.bmp</iconset>
+   </property>
+   <property name="text">
+    <string>清除照片</string>
+   </property>
+   <property name="toolTip">
+    <string>清除照片</string>
+   </property>
+  </action>
+  <action name="actScan">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+     <normaloff>:/images/images/up.bmp</normaloff>:/images/images/up.bmp</iconset>
+   </property>
+   <property name="text">
+    <string>涨工资</string>
+   </property>
+   <property name="toolTip">
+    <string>涨工资</string>
+   </property>
+  </action>
+  <action name="actFlush_database">
+   <property name="icon">
+    <iconset>
+     <normaloff>images/flush_line.png</normaloff>images/flush_line.png</iconset>
+   </property>
+   <property name="text">
+    <string>刷新数据库</string>
+   </property>
+  </action>
  </widget>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
