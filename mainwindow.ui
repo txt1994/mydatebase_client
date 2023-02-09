@@ -21,8 +21,49 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="1">
+     <widget class="QPushButton" name="Btn_sqlsearch">
+      <property name="text">
+       <string>执行sql搜索</string>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="0">
-     <widget class="QTableView" name="tableView"/>
+     <widget class="QLineEdit" name="lineEdit_sqlcommd">
+      <property name="minimumSize">
+       <size>
+        <width>80</width>
+        <height>140</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="3">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>表格内容与修改</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QTableView" name="tableView"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>SQL结果</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QPlainTextEdit" name="plainTextEdit"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -69,7 +110,7 @@
   </widget>
   <action name="actOpenDB">
    <property name="icon">
-    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+    <iconset resource="res.qrc">
      <normaloff>:/images/images/open3.bmp</normaloff>:/images/images/open3.bmp</iconset>
    </property>
    <property name="text">
@@ -81,7 +122,7 @@
   </action>
   <action name="actQuit">
    <property name="icon">
-    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+    <iconset resource="res.qrc">
      <normaloff>:/images/images/exit.bmp</normaloff>:/images/images/exit.bmp</iconset>
    </property>
    <property name="text">
@@ -96,7 +137,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+    <iconset resource="res.qrc">
      <normaloff>:/images/images/316.bmp</normaloff>:/images/images/316.bmp</iconset>
    </property>
    <property name="text">
@@ -111,7 +152,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+    <iconset resource="res.qrc">
      <normaloff>:/images/images/306.bmp</normaloff>:/images/images/306.bmp</iconset>
    </property>
    <property name="text">
@@ -126,7 +167,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+    <iconset resource="res.qrc">
      <normaloff>:/images/images/save1.bmp</normaloff>:/images/images/save1.bmp</iconset>
    </property>
    <property name="text">
@@ -141,7 +182,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+    <iconset resource="res.qrc">
      <normaloff>:/images/images/ubdo.bmp</normaloff>:/images/images/ubdo.bmp</iconset>
    </property>
    <property name="text">
@@ -156,7 +197,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+    <iconset resource="res.qrc">
      <normaloff>:/images/images/delete1.bmp</normaloff>:/images/images/delete1.bmp</iconset>
    </property>
    <property name="text">
@@ -171,7 +212,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+    <iconset resource="res.qrc">
      <normaloff>:/images/images/00.JPG</normaloff>:/images/images/00.JPG</iconset>
    </property>
    <property name="text">
@@ -186,7 +227,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+    <iconset resource="res.qrc">
      <normaloff>:/images/images/103.bmp</normaloff>:/images/images/103.bmp</iconset>
    </property>
    <property name="text">
@@ -201,7 +242,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="../../Desktop/Qt5.9C-DevelopmentTutorialCode-master/Source/QT5.12Samp2019/chap11Database/samp11_1Table/res.qrc">
+    <iconset resource="res.qrc">
      <normaloff>:/images/images/up.bmp</normaloff>:/images/images/up.bmp</iconset>
    </property>
    <property name="text">
@@ -221,6 +262,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

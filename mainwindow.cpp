@@ -192,3 +192,14 @@ void MainWindow::on_actScan_triggered() {
 void MainWindow::onComboBoxindexchanged(int index) {
     openTable();
 }
+
+void MainWindow::on_Btn_sqlsearch_clicked() {
+    // 执行搜索命令
+    QString commd = ui->lineEdit_sqlcommd->text();
+    QSqlQuery query(DB);
+    query.exec(commd);
+
+    for (int var = 0; var < query.size(); ++var) {
+        qDebug() << "Hello world!";
+    }
+}

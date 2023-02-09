@@ -44,6 +44,8 @@ private slots:
 
     void onComboBoxindexchanged(int index);
 
+    void on_Btn_sqlsearch_clicked();
+
 private:
     Ui::MainWindow* ui;
 
