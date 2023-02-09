@@ -53,6 +53,8 @@ private:
 
     QSqlTableModel* tabModel; // 数据模型
 
+    QSqlQueryModel* qryModel; //数据库模型
+
     QItemSelectionModel* theSelection; //选择模型
 
     QWComboBoxDelegate delegateSex;      // 自定义数据代理，性别

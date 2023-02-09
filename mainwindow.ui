@@ -59,7 +59,7 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
-         <widget class="QPlainTextEdit" name="plainTextEdit"/>
+         <widget class="QTableView" name="tableView_2"/>
         </item>
        </layout>
       </widget>

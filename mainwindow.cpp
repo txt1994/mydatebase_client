@@ -44,14 +44,11 @@ void MainWindow::on_actOpenDB_triggered() {
 
     QStringList list = DB.tables();
     data->addItems(list);
-    data->setCurrentIndex(0);
-
-    //打开数据表
-    openTable();
 }
 
 void MainWindow::openTable() {
     tabModel = new QSqlTableModel(this, DB); //数据表
+    qryModel = new QSqlQueryModel(this);
     tabModel->setTable(data->currentText());
     tabModel->setEditStrategy(QSqlTableModel::OnManualSubmit); //数据保存方式，OnManualSubmit
                                                                //, OnRowChange
@@ -72,41 +69,49 @@ void MainWindow::openTable() {
     connect(theSelection, &QItemSelectionModel::currentRowChanged, this,
             &MainWindow::on_currentRowChanged);
 
-    ui->tableView->setModel(tabModel);                                  //设置数据模型
-    ui->tableView->setSelectionModel(theSelection);                     //设置选择模型
+    ui->tableView->setModel(tabModel);   //设置数据模型
+    ui->tableView_2->setModel(qryModel); //设置数据模型
+    ui->tableView_2->setDefaultDropAction(Qt::IgnoreAction);
+    ui->tableView->setSelectionModel(theSelection);   //设置选择模型
+    ui->tableView_2->setSelectionModel(theSelection); //设置选择模型
+    ui->tableView_2->setSelectionMode(QAbstractItemView::NoSelection);
     ui->tableView->setColumnHidden(tabModel->fieldIndex("Memo"), true); //隐藏列
     ui->tableView->setColumnHidden(tabModel->fieldIndex("Photo"),
-                                   true); //隐藏列
+                                   true);                                 //隐藏列
+    ui->tableView_2->setColumnHidden(tabModel->fieldIndex("Memo"), true); //隐藏列
+    ui->tableView_2->setColumnHidden(tabModel->fieldIndex("Photo"),
+                                     true); //隐藏列
 
-    // tableView上为“性别”和“部门”两个字段设置自定义代理组件
-    QStringList strList;
-    strList << "男"
-            << "女";
-    bool isEditable = false;
-    delegateSex.setItems(strList, isEditable);
-    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("Gender"),
-                                            &delegateSex); // Combbox选择型
+    //    // tableView上为“性别”和“部门”两个字段设置自定义代理组件
+    //    QStringList strList;
+    //    strList << "男"
+    //            << "女";
+    //    bool isEditable = false;
+    //    delegateSex.setItems(strList, isEditable);
+    //    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("Gender"),
+    //                                            &delegateSex); // Combbox选择型
 
-    strList.clear();
-    strList << "销售部"
-            << "技术部"
-            << "生产部"
-            << "行政部";
-    isEditable = true;
-    delegateDepart.setItems(strList, isEditable);
-    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("Department"),
-                                            &delegateDepart); // Combbox选择型
+    //    strList.clear();
+    //    strList << "销售部"
+    //            << "技术部"
+    //            << "生产部"
+    //            << "行政部";
+    //    isEditable = true;
+    //    delegateDepart.setItems(strList, isEditable);
+    //    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("Department"),
+    //                                            &delegateDepart); // Combbox选择型
 
-    delegateBirthdaty.setItems(isEditable);
-    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("Birthday"),
-                                            &delegateBirthdaty); // 日期选择型
+    //    delegateBirthdaty.setItems(isEditable);
+    //    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("Birthday"),
+    //                                            &delegateBirthdaty); // 日期选择型
 
-    delegateNO.setItems(isEditable);
-    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("empNo"), &delegateNO); // NO选择型
+    //    delegateNO.setItems(isEditable);
+    //    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("empNo"), &delegateNO); //
+    //    NO选择型
 
-    delegateSalary.setItems(isEditable);
-    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("Salary"),
-                                            &delegateSalary); // Salary选择型
+    //    delegateSalary.setItems(isEditable);
+    //    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("Salary"),
+    //                                            &delegateSalary); // Salary选择型
 
     //更新actions和界面组件的使能状态
     ui->actOpenDB->setEnabled(false);
@@ -196,10 +201,12 @@ void MainWindow::onComboBoxindexchanged(int index) {
 void MainWindow::on_Btn_sqlsearch_clicked() {
     // 执行搜索命令
     QString commd = ui->lineEdit_sqlcommd->text();
-    QSqlQuery query(DB);
-    query.exec(commd);
 
-    for (int var = 0; var < query.size(); ++var) {
-        qDebug() << "Hello world!";
+    qryModel->setQuery(commd);
+    if (qryModel->lastError().isValid()) {
+        QMessageBox::information(this, "错误",
+                                 "数据表查询错误,错误信息\n" + qryModel->lastError().text(),
+                                 QMessageBox::Ok, QMessageBox::NoButton);
+        return;
     }
 }
