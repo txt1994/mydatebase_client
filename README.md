@@ -17,7 +17,7 @@
 - [ ] MongoDB(非关系型数据库)
 
 - 探查`Sqlite`数据库文件里的存储的表单
-- 支持sqlsql命令搜索
+- 支持sql命令搜索
 
 ## 致谢
 [QT Create](https://www.qt.io/)
