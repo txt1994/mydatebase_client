@@ -8,6 +8,7 @@
 #include <QTranslator>
 QString readfromjson();
 QTranslator* translator = nullptr; // 设置全局变量为了热切换功能
+MainWindow* w           = nullptr;
 
 int main(int argc, char* argv[]) {
     QApplication a(argc, argv);
@@ -30,11 +31,10 @@ int main(int argc, char* argv[]) {
             throw std::runtime_error(a.translate("Main", "Your system needs to support tray icon.")
                                          .toUtf8()
                                          .toStdString());
-        TrayIcon t(this);
+        w = new MainWindow;
+        w->show();
+        TrayIcon t(w);
         t.show();
-
-        MainWindow w;
-        w.show();
         return a.exec();
     } catch (const std::exception& e) {
         QMessageBox::critical(nullptr, QApplication::applicationName(), e.what());

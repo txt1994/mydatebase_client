@@ -1,6 +1,7 @@
 #ifndef TRAYICON_HPP
 #define TRAYICON_HPP
 
+#include "mainwindow.hpp"
 #include <QMenu>
 #include <QSystemTrayIcon>
 class TrayIcon : public QSystemTrayIcon {

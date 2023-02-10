@@ -20,8 +20,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     data->setEditable(true);
     ui->toolBar->addWidget(data);
     connect(data, SIGNAL(currentIndexChanged(int)), this, SLOT(onComboBoxindexchanged(int)));
-
-    setWindowFlags(Qt::WA_DeleteOnClose);
 }
 
 MainWindow::~MainWindow() {
@@ -211,7 +209,7 @@ void MainWindow::on_comboBox_currentTextChanged(const QString& arg1) {
 
 void MainWindow::updatesetting(QString& str) {
     QFile file(":/locales/settings.json");
-    if (!file.open(QIODevice::ReadOnly)) {
+    if (!file.open(QFile::ReadWrite)) {
         qDebug() << "无法打开json文件!";
         return;
     } else {

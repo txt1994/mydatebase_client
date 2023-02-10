@@ -1,6 +1,7 @@
 #include "trayicon.hpp"
-#include "mainwindow.hpp"
+
 #include <QApplication>
+extern MainWindow* w;
 TrayIcon::TrayIcon(QObject* parent) : QSystemTrayIcon(parent) {
 
     QIcon exitIcon(":/images/images/exit.bmp");
@@ -20,18 +21,15 @@ TrayIcon::TrayIcon(QObject* parent) : QSystemTrayIcon(parent) {
     setContextMenu(&menu); // 设置菜单系统托盘图标的上下文菜单
     setToolTip(QApplication::applicationName());
 
-    connect(this, &QSystemTrayIcon::activated, this,
-            &TrayIcon::trayIconActivated); // 双击托盘图标动作
+    connect(this, &QSystemTrayIcon::activated, this, &TrayIcon::trayIconActivated);
 }
 
 void TrayIcon::exitActionTriggered() {
     QApplication::exit();
 }
 
-void TrayIcon::trayIconActivated(ActivationReason reason) {
+void TrayIcon::trayIconActivated(QSystemTrayIcon::ActivationReason reason) {
     if (reason == DoubleClick) {
-        MainWindow* w = new MainWindow;
-        w->setAttribute(Qt::WA_DeleteOnClose);
         w->show();
     }
 }
