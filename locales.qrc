@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>locales/DataBase_GUI.en.qm</file>
+        <file>locales/settings.json</file>
+    </qresource>
+</RCC>
