@@ -20,20 +20,30 @@ SOURCES += qwcomboboxdelegate.cpp \
     mainwindow.cpp \
     qwdatedelegate.cpp \
     qwintdelegate.cpp \
-    qwspindoubledelegate.cpp
+    qwspindoubledelegate.cpp \
+    trayicon.cpp
 
 HEADERS += qwcomboboxdelegate.hpp \
     mainwindow.hpp \
     qwdatedelegate.hpp \
     qwintdelegate.hpp \
-    qwspindoubledelegate.hpp
+    qwspindoubledelegate.hpp \
+    trayicon.hpp
 
 FORMS += mainwindow.ui
+
+TRANSLATIONS += \
+    locales/DataBase_GUI.en.ts \
+    locales/DataBase_GUI.cn.ts
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+RC_ICONS = icons/database.ico
+
 RESOURCES += \
+    icons.qrc \
+    locales.qrc \
     res.qrc

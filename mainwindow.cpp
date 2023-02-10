@@ -1,21 +1,25 @@
 #include "mainwindow.hpp"
 #include "ui_mainwindow.h"
+#include <QDebug>
 #include <QFileDialog>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QLabel>
 #include <QMessageBox>
 
-#include <QDebug>
+extern QTranslator* translator;
+
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
     QLabel* lab_datename = new QLabel(this);
-    lab_datename->setText("数据库列表: ");
+    lab_datename->setText(tr("数据库列表: "));
     ui->toolBar->addWidget(lab_datename);
     data = new QComboBox(this);
     data->setFixedSize(100, 23);
     data->setEditable(true);
     ui->toolBar->addWidget(data);
-    connect(data, &QComboBox::currentIndexChanged, this, &MainWindow::onComboBoxindexchanged);
+    connect(data, SIGNAL(currentIndexChanged(int)), this, SLOT(onComboBoxindexchanged(int)));
 }
 
 MainWindow::~MainWindow() {
@@ -24,8 +28,8 @@ MainWindow::~MainWindow() {
 
 void MainWindow::on_actOpenDB_triggered() {
     // 打开数据库
-    QString aFile =
-        QFileDialog::getOpenFileName(this, "选择数据库文件", "", "SQL Lite数据库(*.db *.db3)");
+    QString aFile = QFileDialog::getOpenFileName(this, tr("选择数据库文件"), "",
+                                                 tr("SQL Lite数据库(*.db *.db3)"));
     if (aFile.isEmpty()) //选择SQL Lite数据库文件
         return;
 
@@ -37,7 +41,7 @@ void MainWindow::on_actOpenDB_triggered() {
                                                //    DB.setPassword();
     if (!DB.open())                            //打开数据库
     {
-        QMessageBox::warning(this, "错误", "打开数据库失败", QMessageBox::Ok,
+        QMessageBox::warning(this, tr("错误"), tr("打开数据库失败"), QMessageBox::Ok,
                              QMessageBox::NoButton);
         return;
     }
@@ -55,8 +59,8 @@ void MainWindow::openTable() {
     tabModel->setSort(tabModel->fieldIndex("empNo"), Qt::AscendingOrder); //排序
     if (!(tabModel->select()))                                            //查询数据
     {
-        QMessageBox::critical(this, "错误信息",
-                              "打开数据表错误,错误信息\n" + tabModel->lastError().text(),
+        QMessageBox::critical(this, tr("错误信息"),
+                              tr("打开数据表错误,错误信息\n") + tabModel->lastError().text(),
                               QMessageBox::Ok, QMessageBox::NoButton);
         return;
     }
@@ -190,7 +194,7 @@ void MainWindow::on_actScan_triggered() {
         tabModel->setRecord(i, aRec);
     }
     if (tabModel->submitAll())
-        QMessageBox::information(this, "消息", "涨工资计算完毕", QMessageBox::Ok,
+        QMessageBox::information(this, tr("消息"), tr("涨工资计算完毕"), QMessageBox::Ok,
                                  QMessageBox::NoButton);
 }
 
@@ -200,13 +204,57 @@ void MainWindow::onComboBoxindexchanged(int index) {
 
 void MainWindow::on_Btn_sqlsearch_clicked() {
     // 执行搜索命令
-    QString commd = ui->lineEdit_sqlcommd->text();
+    QString commd = ui->plainTextEdit->toPlainText();
+    if (!commd.isEmpty()) {
 
-    qryModel->setQuery(commd);
-    if (qryModel->lastError().isValid()) {
-        QMessageBox::information(this, "错误",
-                                 "数据表查询错误,错误信息\n" + qryModel->lastError().text(),
-                                 QMessageBox::Ok, QMessageBox::NoButton);
-        return;
+        qryModel->setQuery(commd);
+        if (qryModel->lastError().isValid()) {
+            QMessageBox::information(this, tr("错误"),
+                                     tr("数据表查询错误,错误信息\n") + qryModel->lastError().text(),
+                                     QMessageBox::Ok, QMessageBox::NoButton);
+            return;
+        }
     }
+}
+
+void MainWindow::on_comboBox_currentTextChanged(const QString& arg1) {
+    // 语言热切换功能
+    // 从json文件中读取设置
+    qApp->removeTranslator(translator);
+    delete translator;
+
+    translator = new QTranslator;
+    QString str;
+    if (arg1 == "English") {
+        translator->load("DataBase_GUI.en.qm", ":/locales", "", ".qm");
+        str = "DataBase_GUI.en.qm";
+    } else {
+        translator->load("DataBase_GUI.cn.qm", ":/locales", "", ".qm");
+        str = "DataBase_GUI.cn.qm";
+    }
+    updatesetting(str); // 写配置文件
+
+    qApp->installTranslator(translator);
+    ui->retranslateUi(this);
+}
+
+void MainWindow::updatesetting(QString& str) {
+    QFile file(":/locales/settings.json");
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << "无法打开json文件!";
+        return;
+    } else {
+        QJsonParseError err;
+        QJsonDocument doc = QJsonDocument::fromJson(file.readAll(), &err);
+        if (err.error != QJsonParseError::NoError) {
+            qDebug() << "json 格式错误";
+            return;
+        }
+        QJsonObject obj = doc.object();
+        obj.insert("language", str);
+        QJsonDocument doc1(obj);
+        QByteArray json = doc1.toJson();
+        file.write(json);
+    }
+    file.close();
 }

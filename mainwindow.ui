@@ -21,24 +21,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
-     <widget class="QPushButton" name="Btn_sqlsearch">
-      <property name="text">
-       <string>执行sql搜索</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLineEdit" name="lineEdit_sqlcommd">
-      <property name="minimumSize">
-       <size>
-        <width>80</width>
-        <height>140</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="3">
+    <item row="2" column="0" colspan="5">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
        <number>1</number>
@@ -64,6 +47,36 @@
        </layout>
       </widget>
      </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="Btn_sqlsearch">
+      <property name="text">
+       <string>执行sql搜索</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QComboBox" name="comboBox">
+      <property name="maximumSize">
+       <size>
+        <width>93</width>
+        <height>21</height>
+       </size>
+      </property>
+      <item>
+       <property name="text">
+        <string>English</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>汉语</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="1" rowspan="2">
+     <widget class="QPlainTextEdit" name="plainTextEdit"/>
     </item>
    </layout>
   </widget>

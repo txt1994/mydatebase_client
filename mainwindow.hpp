@@ -46,6 +46,8 @@ private slots:
 
     void on_Btn_sqlsearch_clicked();
 
+    void on_comboBox_currentTextChanged(const QString& arg1);
+
 private:
     Ui::MainWindow* ui;
 
@@ -66,6 +68,8 @@ private:
     QComboBox* data; // 数据库文件的数据库列表
 
     QStringList gettables();
+
+    void updatesetting(QString& str);
 
     void on_currentChanged(const QModelIndex& current, const QModelIndex& previous);
 
