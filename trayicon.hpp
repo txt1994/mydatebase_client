@@ -10,6 +10,7 @@ public:
     QMenu menu;
 private slots:
     void exitActionTriggered(); // 退出函数
+    void trayIconActivated(ActivationReason reason);
 };
 
 #endif // TRAYICON_HPP

@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
             throw std::runtime_error(a.translate("Main", "Your system needs to support tray icon.")
                                          .toUtf8()
                                          .toStdString());
-        TrayIcon t;
+        TrayIcon t(this);
         t.show();
 
         MainWindow w;

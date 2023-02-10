@@ -1,4 +1,5 @@
 #include "trayicon.hpp"
+#include "mainwindow.hpp"
 #include <QApplication>
 TrayIcon::TrayIcon(QObject* parent) : QSystemTrayIcon(parent) {
 
@@ -18,8 +19,19 @@ TrayIcon::TrayIcon(QObject* parent) : QSystemTrayIcon(parent) {
     connect(action, &QAction::triggered, this, &TrayIcon::exitActionTriggered);
     setContextMenu(&menu); // 设置菜单系统托盘图标的上下文菜单
     setToolTip(QApplication::applicationName());
+
+    connect(this, &QSystemTrayIcon::activated, this,
+            &TrayIcon::trayIconActivated); // 双击托盘图标动作
 }
 
 void TrayIcon::exitActionTriggered() {
     QApplication::exit();
+}
+
+void TrayIcon::trayIconActivated(ActivationReason reason) {
+    if (reason == DoubleClick) {
+        MainWindow* w = new MainWindow;
+        w->setAttribute(Qt::WA_DeleteOnClose);
+        w->show();
+    }
 }

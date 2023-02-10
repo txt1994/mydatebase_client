@@ -20,6 +20,8 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     data->setEditable(true);
     ui->toolBar->addWidget(data);
     connect(data, SIGNAL(currentIndexChanged(int)), this, SLOT(onComboBoxindexchanged(int)));
+
+    setWindowFlags(Qt::WA_DeleteOnClose);
 }
 
 MainWindow::~MainWindow() {
@@ -85,37 +87,6 @@ void MainWindow::openTable() {
     ui->tableView_2->setColumnHidden(tabModel->fieldIndex("Memo"), true); //隐藏列
     ui->tableView_2->setColumnHidden(tabModel->fieldIndex("Photo"),
                                      true); //隐藏列
-
-    //    // tableView上为“性别”和“部门”两个字段设置自定义代理组件
-    //    QStringList strList;
-    //    strList << "男"
-    //            << "女";
-    //    bool isEditable = false;
-    //    delegateSex.setItems(strList, isEditable);
-    //    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("Gender"),
-    //                                            &delegateSex); // Combbox选择型
-
-    //    strList.clear();
-    //    strList << "销售部"
-    //            << "技术部"
-    //            << "生产部"
-    //            << "行政部";
-    //    isEditable = true;
-    //    delegateDepart.setItems(strList, isEditable);
-    //    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("Department"),
-    //                                            &delegateDepart); // Combbox选择型
-
-    //    delegateBirthdaty.setItems(isEditable);
-    //    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("Birthday"),
-    //                                            &delegateBirthdaty); // 日期选择型
-
-    //    delegateNO.setItems(isEditable);
-    //    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("empNo"), &delegateNO); //
-    //    NO选择型
-
-    //    delegateSalary.setItems(isEditable);
-    //    ui->tableView->setItemDelegateForColumn(tabModel->fieldIndex("Salary"),
-    //                                            &delegateSalary); // Salary选择型
 
     //更新actions和界面组件的使能状态
     ui->actOpenDB->setEnabled(false);
