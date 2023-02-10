@@ -1,10 +1,10 @@
 #ifndef MAINWINDOW_HPP
 #define MAINWINDOW_HPP
 
-#include "qwcomboboxdelegate.hpp"
-#include "qwdatedelegate.hpp"
-#include "qwintdelegate.hpp"
-#include "qwspindoubledelegate.hpp"
+// #include "qwcomboboxdelegate.hpp"
+// #include "qwdatedelegate.hpp"
+// #include "qwintdelegate.hpp"
+// #include "qwspindoubledelegate.hpp"
 #include <QComboBox>
 #include <QMainWindow>
 #include <QtSql>
@@ -59,11 +59,11 @@ private:
 
     QItemSelectionModel* theSelection; //选择模型
 
-    QWComboBoxDelegate delegateSex;      // 自定义数据代理，性别
-    QWComboBoxDelegate delegateDepart;   // 自定义数据代理，部门
-    QWspindoubleDelegate delegateSalary; // 自定义数据代理，工资
-    QWDateDelegate delegateBirthdaty;    // 自定义数据代理，生日
-    QWIntDelegate delegateNO;            // 自定义数据代理, 编号
+    // QWComboBoxDelegate delegateSex;      // 自定义数据代理，性别
+    // QWComboBoxDelegate delegateDepart;   // 自定义数据代理，部门
+    // QWspindoubleDelegate delegateSalary; // 自定义数据代理，工资
+    // QWDateDelegate delegateBirthdaty;    // 自定义数据代理，生日
+    // QWIntDelegate delegateNO;            // 自定义数据代理, 编号
 
     QComboBox* data; // 数据库文件的数据库列表
 
