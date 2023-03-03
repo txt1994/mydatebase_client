@@ -75,6 +75,7 @@ void MainWindow::openTable() {
 
     ui->tableView->setModel(tabModel);   //设置数据模型
     ui->tableView_2->setModel(qryModel); //设置数据模型
+
     ui->tableView_2->setDefaultDropAction(Qt::IgnoreAction);
     ui->tableView->setSelectionModel(theSelection);   //设置选择模型
     ui->tableView_2->setSelectionModel(theSelection); //设置选择模型
